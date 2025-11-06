@@ -99,91 +99,10 @@ function filterProperties(type) {
 
 // Render property card
 function createPropertyCard(property, index) {
-    const featuredBadge = property.featured ? `
-        <div class="featured-badge">
-            <svg fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
-            </svg>
-            Featured
-        </div>
-    ` : '';
-    
     return `
         <div class="property-card" style="animation-delay: ${index * 0.1}s">
             <div class="property-image-container">
                 <img src="${property.image}" alt="${property.title}" class="property-image">
-                <div class="property-overlay"></div>
-                
-                <div class="property-badges">
-                    ${featuredBadge}
-                    <button class="wishlist-btn" onclick="toggleWishlist(${property.id})">
-                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-                        </svg>
-                    </button>
-                </div>
-                
-                <div class="property-type-badge">${property.type}</div>
-                
-                <div class="property-price-section">
-                    <div>
-                        <p class="property-price-label">Starting from</p>
-                        <p class="property-price">${property.price}</p>
-                    </div>
-                    <button class="view-btn" onclick="viewProperty(${property.id})">
-                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
-                        </svg>
-                        View
-                    </button>
-                </div>
-            </div>
-            
-            <div class="property-content">
-                <h3 class="property-title">${property.title}</h3>
-                <div class="property-location">
-                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-                    </svg>
-                    <span>${property.location}</span>
-                </div>
-                
-                <div class="property-features">
-                    <div class="feature-item">
-                        <div class="feature-icon">
-                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
-                            </svg>
-                        </div>
-                        <p class="feature-value">${property.bedrooms}</p>
-                        <p class="feature-label">Bedrooms</p>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">
-                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
-                            </svg>
-                        </div>
-                        <p class="feature-value">${property.bathrooms}</p>
-                        <p class="feature-label">Bathrooms</p>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">
-                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/>
-                            </svg>
-                        </div>
-                        <p class="feature-value">${property.area}</p>
-                        <p class="feature-label">Area</p>
-                    </div>
-                </div>
-                
-                <div class="property-actions">
-                    <button class="btn-schedule" onclick="scheduleTour(${property.id})">Schedule Tour</button>
-                    <button class="btn-details" onclick="viewProperty(${property.id})">Details</button>
-                </div>
             </div>
         </div>
     `;

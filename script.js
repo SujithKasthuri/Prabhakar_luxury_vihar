@@ -32,14 +32,7 @@ function sendWhatsAppFromForm() {
         whatsappMessage += `\n💬 *Interest:* General inquiry about Prabhakar Luxury Vihar properties\n`;
     }
     
-    whatsappMessage += `\n📋 *Customer Requirements:*\n`;
-    whatsappMessage += `• Property details and current pricing\n`;
-    whatsappMessage += `• Site visit scheduling\n`;
-    whatsappMessage += `• Complete amenities information\n`;
-    whatsappMessage += `• Payment plans and financing options\n`;
-    whatsappMessage += `• Legal documentation details\n\n`;
-    
-    whatsappMessage += `📅 *Inquiry Submitted:* ${new Date().toLocaleDateString('en-IN', { 
+    whatsappMessage += `\n *Inquiry Submitted:* ${new Date().toLocaleDateString('en-IN', { 
         weekday: 'long', 
         year: 'numeric', 
         month: 'long', 

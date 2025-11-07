@@ -9,7 +9,7 @@ const properties = [
         bedrooms: 5,
         bathrooms: 6,
         area: '4500 sq.ft',
-        image: 'https://images.unsplash.com/photo-1679364297777-1db77b6199be?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjB2aWxsYSUyMGV4dGVyaW9yfGVufDF8fHx8MTc2MjE1MDAzOXww&ixlib=rb-4.1.0&q=80&w=1080',
+        image: './assets/Siteimage.jpg',
         featured: true
     },
     {
@@ -21,7 +21,7 @@ const properties = [
         bedrooms: 4,
         bathrooms: 4,
         area: '3200 sq.ft',
-        image: 'https://images.unsplash.com/photo-1677553512940-f79af72efd1b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBwZW50aG91c2UlMjBpbnRlcmlvcnxlbnwxfHx8fDE3NjIxNjAzNzF8MA&ixlib=rb-4.1.0&q=80&w=1080',
+        image: './assets/siteimage2.jpg',
         featured: true
     },
     {
@@ -33,7 +33,7 @@ const properties = [
         bedrooms: 3,
         bathrooms: 3,
         area: '2400 sq.ft',
-        image: 'https://images.unsplash.com/photo-1664892798972-079f15663b16?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBsdXh1cnklMjBhcGFydG1lbnR8ZW58MXx8fHwxNzYyMTczNzkzfDA&ixlib=rb-4.1.0&q=80&w=1080',
+        image: './assets/siteimage3.jpg',
         featured: false
     },
     {
@@ -45,7 +45,19 @@ const properties = [
         bedrooms: 7,
         bathrooms: 8,
         area: '6500 sq.ft',
-        image: 'https://images.unsplash.com/photo-1505843513577-22bb7d21e455?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBtYW5zaW9ufGVufDF8fHx8MTc2MjE3Mzc5NHww&ixlib=rb-4.1.0&q=80&w=1080',
+        image: './assets/siteimage4.jpg',
+        featured: true
+    },
+    {
+        id: 5,
+        title: 'Premium Estate',
+        type: 'villa',
+        price: '₹8.9 Cr',
+        location: 'Greater Community, Executive Zone',
+        bedrooms: 6,
+        bathrooms: 7,
+        area: '5200 sq.ft',
+        image: './assets/siteimage5.jpg',
         featured: true
     }
 ];

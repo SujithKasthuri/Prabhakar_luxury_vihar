@@ -1,3 +1,84 @@
+// WhatsApp Integration Functions
+function sendWhatsAppMessage(customMessage = '') {
+    const phoneNumber = '918328685249';
+    let message = customMessage || 'Hi, I\'m interested in Prabhakar Luxury Vihar properties. Please provide more information.';
+    
+    const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappURL, '_blank');
+}
+
+function sendWhatsAppFromForm() {
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const message = document.getElementById('message').value.trim();
+    
+    // Validate required fields
+    if (!name || !email || !phone) {
+        alert('Please fill in all required fields: Full Name, Email Address, and Phone Number.');
+        return;
+    }
+    
+    // Create formatted WhatsApp message
+    let whatsappMessage = `🏡 *New Customer Inquiry - Prabhakar Luxury Vihar*\n\n`;
+    
+    whatsappMessage += `👤 *Full Name:* ${name}\n`;
+    whatsappMessage += `📧 *Email Address:* ${email}\n`;
+    whatsappMessage += `📱 *Phone Number:* ${phone}\n`;
+    
+    if (message) {
+        whatsappMessage += `\n💬 *Customer Message:*\n"${message}"\n`;
+    } else {
+        whatsappMessage += `\n💬 *Interest:* General inquiry about Prabhakar Luxury Vihar properties\n`;
+    }
+    
+    whatsappMessage += `\n📋 *Customer Requirements:*\n`;
+    whatsappMessage += `• Property details and current pricing\n`;
+    whatsappMessage += `• Site visit scheduling\n`;
+    whatsappMessage += `• Complete amenities information\n`;
+    whatsappMessage += `• Payment plans and financing options\n`;
+    whatsappMessage += `• Legal documentation details\n\n`;
+    
+    whatsappMessage += `📅 *Inquiry Submitted:* ${new Date().toLocaleDateString('en-IN', { 
+        weekday: 'long', 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric' 
+    })}\n`;
+    whatsappMessage += `⏰ *Time:* ${new Date().toLocaleTimeString('en-IN', { 
+        hour: '2-digit', 
+        minute: '2-digit',
+        hour12: true 
+    })}\n\n`;
+    
+    whatsappMessage += `🌟 *Please contact this customer at the earliest for follow-up.*`;
+    
+    const phoneNumber = '918328685249';
+    const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+    window.open(whatsappURL, '_blank');
+    
+    // Show success message
+    showSuccessMessage();
+}
+
+// Show success message after form submission
+function showSuccessMessage() {
+    alert('✅ Thank you! Your inquiry has been sent via WhatsApp. We will contact you shortly.');
+}
+
+// Show/hide WhatsApp float button based on scroll
+function toggleWhatsAppButton() {
+    const whatsappFloat = document.getElementById('whatsappFloat');
+    const scrollPosition = window.scrollY;
+    
+    if (scrollPosition > 100) {
+        whatsappFloat.style.display = 'block';
+        whatsappFloat.style.animation = 'whatsapp-pulse 2s infinite';
+    } else {
+        whatsappFloat.style.display = 'none';
+    }
+}
+
 // Properties Data
 const properties = [
     {
@@ -86,7 +167,7 @@ function toggleMobileMenu() {
     }
 }
 
-// Navbar scroll effect
+// Navbar scroll effect and WhatsApp button toggle
 window.addEventListener('scroll', () => {
     const navbar = document.getElementById('navbar');
     if (window.scrollY > 50) {
@@ -94,6 +175,9 @@ window.addEventListener('scroll', () => {
     } else {
         navbar.classList.remove('scrolled');
     }
+    
+    // Toggle WhatsApp button
+    toggleWhatsAppButton();
 });
 
 // Filter properties
@@ -164,13 +248,8 @@ document.addEventListener('DOMContentLoaded', () => {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
             
-            const formData = new FormData(contactForm);
-            const data = {};
-            formData.forEach((value, key) => {
-                data[key] = value;
-            });
-            
-            alert('Thank you for your interest! We will contact you shortly.');
+            // Send form data via WhatsApp
+            sendWhatsAppFromForm();
             contactForm.reset();
         });
     }

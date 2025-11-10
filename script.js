@@ -1,6 +1,6 @@
 // WhatsApp Integration Functions
 function sendWhatsAppMessage(customMessage = '') {
-    const phoneNumber = '918328685249';
+    const phoneNumber = '917799554467';
     let message = customMessage || 'Hi, I\'m interested in Prabhakar Luxury Vihar properties. Please provide more information.';
     
     const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
@@ -46,7 +46,7 @@ function sendWhatsAppFromForm() {
     
     whatsappMessage += `🌟 *Please contact this customer at the earliest for follow-up.*`;
     
-    const phoneNumber = '918328685249';
+    const phoneNumber = '917799554467';
     const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`;
     window.open(whatsappURL, '_blank');
     

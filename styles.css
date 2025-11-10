@@ -729,6 +729,73 @@ html {
     transform: scale(1.02);
 }
 
+/* Virtual Site Tour Section */
+.virtual-tour-section {
+    padding: 2rem 0;
+    background: var(--gray-50);
+}
+
+.virtual-tour-section .section-header {
+    margin-bottom: 2rem;
+}
+
+.virtual-tour-section .properties-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .virtual-tour-section .properties-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        height: auto;
+    }
+}
+
+@media (min-width: 1024px) {
+    .virtual-tour-section .properties-grid {
+        height: auto;
+    }
+}
+
+.video-card {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.5s ease;
+    aspect-ratio: 16 / 9;
+    width: 100%;
+}
+
+.video-card:hover {
+    border-color: var(--gold);
+    box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
+}
+
+.video-card .property-image-container {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+.property-video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+    background: var(--black);
+    display: block;
+}
+
+.video-card:hover .property-video {
+    transform: scale(1.02);
+}
+
 /* About Section */
 .about-section {
     padding: 6rem 0;

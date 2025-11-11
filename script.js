@@ -36,12 +36,12 @@ function sendWhatsAppFromForm() {
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     
     if (isMobile) {
-        // For mobile - use direct link (opens app)
-        window.location.href = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-    } else {
-        // For desktop - use api.whatsapp.com (works for both web and desktop app)
-        window.open(`https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`, '_blank');
-    }
+    // Mobile App
+    window.location.href = `whatsapp://send?phone=${phoneNumber}&text=${encodedMessage}`;
+} else {
+    // Desktop Browser (FORCE WhatsApp Web - prefilled message works)
+    window.open(`https://web.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`, '_blank');
+}
     
     // Show success message after brief delay
     setTimeout(() => {

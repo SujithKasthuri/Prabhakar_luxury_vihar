@@ -32,16 +32,12 @@ function sendWhatsAppFromForm() {
     const phoneNumber = '917799554467';
     const encodedMessage = encodeURIComponent(whatsappMessage);
     
-    // Detect mobile device
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    // Universal WhatsApp URL that works on ALL platforms
+    // wa.me works on: Mobile apps, WhatsApp Web, and WhatsApp Desktop
+    const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
     
-    if (isMobile) {
-    // Mobile App
-    window.location.href = `whatsapp://send?phone=${phoneNumber}&text=${encodedMessage}`;
-} else {
-    // Desktop Browser (FORCE WhatsApp Web - prefilled message works)
-    window.open(`https://web.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`, '_blank');
-}
+    // Open in new tab/window - browser/OS will route to correct WhatsApp client
+    window.open(whatsappURL, '_blank');
     
     // Show success message after brief delay
     setTimeout(() => {

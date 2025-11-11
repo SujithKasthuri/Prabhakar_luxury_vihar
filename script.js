@@ -19,39 +19,26 @@ function sendWhatsAppFromForm() {
         return;
     }
     
-    // Create formatted WhatsApp message (no emojis to avoid encoding issues)
-    let whatsappMessage = `*New Customer Inquiry - Prabhakar Luxury Vihar*\n\n`;
-    
-    whatsappMessage += `*Full Name:* ${name}\n`;
-    whatsappMessage += `*Email Address:* ${email}\n`;
-    whatsappMessage += `*Phone Number:* ${phone}\n`;
+    // Create simple formatted message (mobile-friendly)
+    let whatsappMessage = `New Inquiry - Prabhakar Luxury Vihar\n\n`;
+    whatsappMessage += `Name: ${name}\n`;
+    whatsappMessage += `Email: ${email}\n`;
+    whatsappMessage += `Phone: ${phone}\n`;
     
     if (message) {
-        whatsappMessage += `\n*Customer Message:*\n"${message}"\n`;
-    } else {
-        whatsappMessage += `\n*Interest:* General inquiry about Prabhakar Luxury Vihar properties\n`;
+        whatsappMessage += `Message: ${message}\n`;
     }
-    
-    whatsappMessage += `\n*Inquiry Submitted:* ${new Date().toLocaleDateString('en-IN', { 
-        weekday: 'long', 
-        year: 'numeric', 
-        month: 'long', 
-        day: 'numeric' 
-    })}\n`;
-    whatsappMessage += `*Time:* ${new Date().toLocaleTimeString('en-IN', { 
-        hour: '2-digit', 
-        minute: '2-digit',
-        hour12: true 
-    })}\n\n`;
-    
-    whatsappMessage += `*Please contact this customer at the earliest for follow-up.*`;
     
     const phoneNumber = '917799554467';
     const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`;
-    window.open(whatsappURL, '_blank');
     
-    // Show success message
-    showSuccessMessage();
+    // Try to open WhatsApp - works on both mobile and desktop
+    window.location.href = whatsappURL;
+    
+    // Show success message after a brief delay
+    setTimeout(() => {
+        showSuccessMessage();
+    }, 500);
 }
 
 // Show success message after form submission

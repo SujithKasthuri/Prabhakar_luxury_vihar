@@ -19,26 +19,34 @@ function sendWhatsAppFromForm() {
         return;
     }
     
-    // Create simple formatted message (mobile-friendly)
+    // Create simple formatted message (universal compatibility)
     let whatsappMessage = `New Inquiry - Prabhakar Luxury Vihar\n\n`;
     whatsappMessage += `Name: ${name}\n`;
     whatsappMessage += `Email: ${email}\n`;
-    whatsappMessage += `Phone: ${phone}\n`;
+    whatsappMessage += `Phone: ${phone}`;
     
     if (message) {
-        whatsappMessage += `Message: ${message}\n`;
+        whatsappMessage += `\nMessage: ${message}`;
     }
     
     const phoneNumber = '917799554467';
-    const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+    const encodedMessage = encodeURIComponent(whatsappMessage);
     
-    // Try to open WhatsApp - works on both mobile and desktop
-    window.location.href = whatsappURL;
+    // Detect mobile device
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     
-    // Show success message after a brief delay
+    if (isMobile) {
+        // For mobile - use direct link (opens app)
+        window.location.href = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    } else {
+        // For desktop - use api.whatsapp.com (works for both web and desktop app)
+        window.open(`https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`, '_blank');
+    }
+    
+    // Show success message after brief delay
     setTimeout(() => {
         showSuccessMessage();
-    }, 500);
+    }, 300);
 }
 
 // Show success message after form submission
